@@ -1,8 +1,9 @@
 import pygame
 import sys
 import constantes
-import personaje
-import world
+from character import Character
+from world import World
+
 #iniciliazamos pygame
 pygame.init()
 
@@ -14,7 +15,7 @@ pygame.display.set_caption("Simulador de vida salvaje") #Nombre de la ventana de
 def main():
     clock = pygame.time.Clock() #para que se vaya actualizando el juego
     world = World(constantes.WIDTH, constantes.HEIGHT)
-    personaje = Personaje(constantes.WIDTH // 2, constantes.HEIGHT//2)
+    character = Character(constantes.WIDTH // 2, constantes.HEIGHT//2)
     
     while True:
         for event in pygame.event.get():
