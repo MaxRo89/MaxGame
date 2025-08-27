@@ -6,13 +6,17 @@ class Character:
         self.x = x
         self.y = y
         self.size = 20
-#Donde aparacera nuestro personaje, en que cordenadas
-#Tamano de px del personaje
+        self.inventory = {"wood":0} #lo que puede tener nuestro personaje, ahora tiene 0 madera
+        # Donde aparecerá nuestro personaje, en qué coordenadas
+        # Tamaño en px del personaje
+
     def draw(self, screen):
-     pygame.draw.rect(screen, constantes.BLUE,  rect= (self.x, self.y, self.size, self.size))
-     #dibujamos nuestro personaje
-     
-     def move(self, dx, dy): #como se mueve el personaje en las coordenadas
-         self.x += dx
-         self.x += dy
-         
+        # Dibujamos nuestro personaje
+        pygame.draw.rect(screen, constantes.BLUE, rect=(self.x, self.y, self.size, self.size))
+
+    def move(self, dx, dy):
+        # Cómo se mueve el personaje en las coordenadas
+        self.x += dx
+        self.y += dy
+        self.x = max(0, min(self.x, constantes.WIDTH - self.size)) #para que no se salga de la pantalla
+        self.y = max(0, min(self.y, constantes.HEIGHT - self.size)) #para que no se salga de la pantalla
