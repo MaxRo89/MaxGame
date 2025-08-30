@@ -1,6 +1,8 @@
 #Tamano
 WIDTH, HEIGHT = 800,600
-
+PERSONAJE = 40
+PASTO = 64
+ARBOL = 64
 #Colores
 
 WHITE = (255, 255, 255)

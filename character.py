@@ -1,6 +1,6 @@
 import pygame
 import constantes
-
+import os 
 class Character:
     def __init__(self, x, y):
         self.x = x
@@ -9,11 +9,17 @@ class Character:
         self.inventory = {"wood":0} #lo que puede tener nuestro personaje, ahora tiene 0 madera
         # Donde aparecerá nuestro personaje, en qué coordenadas
         # Tamaño en px del personaje
-
+        image_path = os.path.join("assets", "images", "character", "personaje.png")
+        self.image = pygame.image.load(image_path).convert_alpha() #para guardar la imagen como parametro
+        self.image = pygame.transform.scale(self.image, (constantes.PERSONAJE, constantes.PERSONAJE)) #para redimensionar la imagen
+        self.size = self.image.get_width() 
+        
+        
     def draw(self, screen):
         # Dibujamos nuestro personaje
-        pygame.draw.rect(screen, constantes.BLUE, rect=(self.x, self.y, self.size, self.size))
-
+        screen.blit(self.image, (self.x, self.y))
+        
+        
     def move(self, dx, dy):
         # Cómo se mueve el personaje en las coordenadas
         self.x += dx
